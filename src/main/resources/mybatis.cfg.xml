@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--开启日志输出-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <mappers>
+        <mapper resource="mapper/roles.mapper.xml"/>
+        <mapper resource="mapper/pemission.mapper.xml"/>
+        <mapper resource="mapper/bumen.mapper.xml"/>
+        <mapper resource="mapper/history.mapper.xml"/>
+        <mapper resource="mapper/user.mapper.xml"/>
+        <mapper resource="mapper/qingjia.mapper.xml"/>
+    </mappers>
+
+</configuration>

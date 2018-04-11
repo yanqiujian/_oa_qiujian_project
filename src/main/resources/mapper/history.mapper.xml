@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间，当前文档的一个标识符-->
+<mapper namespace="com.qiujian.dto.HistoryMapper">
+    <!--resultMap结果集的映射-->
+    <!--id是当前resultMap的唯一标识-->
+    <!--type是结果的类型-->
+    <resultMap id="HistoryResultMap" type="com.qiujian.dto.History">
+        <id property="hsId" column="hs_id" javaType="java.lang.Integer"/>
+        <result property="hsZhuguanname" column="hs_zhuguanname" javaType="java.lang.String"/>
+        <result property="hsTime" column="hs_time" javaType="java.lang.String"/>
+        <result property="hsGanwei" column="hs_ganwei" javaType="java.lang.String"/>
+        <result property="hsJihao" column="hs_zhuguanname" javaType="java.lang.String"/>
+        <result property="hsFangshi" column="hs_jihao" javaType="java.lang.String"/>
+        <result property="hsDidian" column="hs_didian" javaType="java.lang.String"/>
+        <result property="hsApplyname" column="hs_applyname" javaType="java.lang.String"/>
+        <result property="hsDepartment" column="hs_department" javaType="java.lang.String"/>
+        <result property="hsZhuangtai" column="hs_zhuangtai" javaType="java.lang.String"/>
+        <result property="hsPrid" column="hs_prid" javaType="java.lang.String"/>
+    </resultMap>
+    <!-- 查询语句 -->
+    <!-- 新增一条历史记录 -->
+    <insert id="insertHistory">
+        insert into history(hs_zhuguanname,hs_time,hs_ganwei,hs_jihao,
+        hs_fangshi,hs_didian,hs_applyname,hs_department,hs_prid) VALUES
+        (#{hsZhuguanname},#{hsTime},#{hsGanwei},#{hsJihao},#{hsFangshi},
+        #{hsDidian},#{hsApplyname},#{hsDepartment},#{hsPrid})
+    </insert>
+    <!-- 根据审批者姓名查询其名下审批任务 -->
+    <select id="getHistoryByZhuguanname" resultMap="HistoryResultMap">
+        select * from history WHERE hs_zhuguanname=#{hsZhuguanname}
+    </select>
+    <!-- 根据提交人姓名查询补签记录 -->
+    <select id="gethsApplynameByName" resultMap="HistoryResultMap">
+        SELECT * FROM history WHERE hs_applyname=#{hsApplyname}
+    </select>
+    <!-- 将状态修改为已审批状态 -->
+    <update id="updateShenpi">
+        UPDATE history set hs_zhuangtai ='yishenpi' WHERE hs_prid=#{hsPrid}
+    </update>
+</mapper>

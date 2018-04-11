@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间，当前文档的一个标识符-->
+<mapper namespace="com.qiujian.dto.UserMapper">
+    <!--resultMap结果集的映射-->
+    <!--id是当前resultMap的唯一标识-->
+    <!--type是结果的类型-->
+    <resultMap id="UserResultMap" type="com.qiujian.dto.UserDto">
+        <id property="userId" column="user_id" javaType="java.lang.Integer"/>
+        <result property="userName" column="user_name" javaType="java.lang.String"/>
+        <result property="userGanwei" column="user_ganwei" javaType="java.lang.String"/>
+        <result property="userPassword" column="user_password" javaType="java.lang.String"/>
+        <!-- 一对多 -->
+        <collection property="rolesDtos" ofType="com.qiujian.dto.RolesDto">
+            <id property="rolesId" column="roles_id" javaType="java.lang.Integer"/>
+            <result property="rolesName" column="roles_name" javaType="java.lang.String"/>
+        </collection>
+    </resultMap>
+    <!-- 查询语句 -->
+    <select id="queryByName" resultMap="UserResultMap">
+        select * from user where user_name = #{userName}
+    </select>
+    <!-- 根据用户部门查询该用户的部门主管信息 -->
+    <select id="queryBumenZhuGuan" resultMap="UserResultMap">
+        SELECT u.user_name from user u join bumen b
+        join us_ro ur join roles r on u.fk_bm_id = b.bm_id
+        and u.user_id=ur.fk_user_id and ur.fk_roles_id=r.roles_id
+        and b.bm_name=#{bmName} and r.roles_name='zhuguan'
+    </select>
+
+    <select id="getCEOName" resultMap="UserResultMap">
+        SELECT u.user_name from user u join us_ro ur join roles r on u.user_id=ur.fk_user_id and ur.fk_roles_id=r.roles_id WHERE r.roles_name='CEO'
+    </select>
+</mapper>

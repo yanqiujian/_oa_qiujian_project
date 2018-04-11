@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间，当前文档的一个标识符-->
+<mapper namespace="com.qiujian.dto.BumenMapper">
+    <!--resultMap结果集的映射-->
+    <!--id是当前resultMap的唯一标识-->
+    <!--type是结果的类型-->
+    <resultMap id="RolesBumentMap" type="com.qiujian.dto.BumenDto">
+        <id property="bmId" column="bm_id" javaType="java.lang.Integer"/>
+        <result property="bmName" column="bm_name" javaType="java.lang.String"/>
+
+        <collection property="userDtos" javaType="com.qiujian.dto.UserDto">
+            <id property="userId" column="user_id" javaType="java.lang.Integer"/>
+            <result property="userName" column="user_name" javaType="java.lang.String"/>
+            <result property="userGanwei" column="user_ganwei" javaType="java.lang.String"/>
+            <result property="userPassword" column="user_password" javaType="java.lang.String"/>
+        </collection>
+    </resultMap>
+    <!-- 查询语句 -->
+    <select id="getBumenByName" resultMap="RolesBumentMap">
+      SELECT b.bm_name from bumen b join user u on b.bm_id=u.fk_bm_id WHERE u.user_name=#{userName}
+    </select>
+
+</mapper>

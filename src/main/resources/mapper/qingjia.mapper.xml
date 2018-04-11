@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间，当前文档的一个标识符-->
+<mapper namespace="com.qiujian.dto.QingjiaDtoMapper">
+    <!--resultMap结果集的映射-->
+    <!--id是当前resultMap的唯一标识-->
+    <!--type是结果的类型-->
+    <resultMap id="QingjiaDtoResultMap" type="com.qiujian.dto.QingjiaDto">
+        <id property="qjId" column="qj_id" javaType="java.lang.Integer"/>
+        <result property="qjBm" column="qj_bm" javaType="java.lang.String"/>
+        <result property="qjGw" column="qj_gw" javaType="java.lang.String"/>
+        <result property="qjApplyname" column="qj_applyname" javaType="java.lang.String"/>
+        <result property="qjLx" column="qj_lx" javaType="java.lang.String"/>
+        <result property="qjShichang" column="qj_shichang" javaType="java.lang.String"/>
+        <result property="qjTime" column="qj_time" javaType="java.lang.String"/>
+        <result property="qjBeizhu" column="qj_beizhu" javaType="java.lang.String"/>
+        <result property="qjSpr" column="qj_spr" javaType="java.lang.String"/>
+        <result property="qjZt" column="qj_zt" javaType="java.lang.String"/>
+        <result property="qjPrid" column="qj_prid" javaType="java.lang.String"/>
+    </resultMap>
+    <!-- 查询语句 -->
+    <!-- 新增一条历史记录 -->
+    <insert id="insertQingjia">
+        insert into qingjia(qj_bm,qj_gw,qj_applyname,qj_lx,
+        qj_shichang,qj_time,qj_beizhu,qj_spr,qj_prid) VALUES
+        (#{qjBm},#{qjGw},#{qjApplyname},#{qjLx},#{qjShichang},
+        #{qjTime},#{qjBeizhu},#{qjSpr},#{qjPrid})
+    </insert>
+    <!-- 根据审批者姓名查询其名下审批任务 -->
+    <select id="getQingjiaBySPR" resultMap="QingjiaDtoResultMap">
+        select * from qingjia WHERE qj_spr=#{qjSpr}
+    </select>
+    <!-- 根据提交人姓名查询补签记录 -->
+    <select id="getQjApplynameByName" resultMap="QingjiaDtoResultMap">
+        SELECT * FROM qingjia WHERE qj_applyname=#{qjApplyname}
+    </select>
+    <!-- 将状态修改为已审批状态 -->
+    <update id="updateShenpi">
+        UPDATE qingjia set qj_zt ='yishenpi' WHERE qj_prid=#{qjPrid}
+    </update>
+</mapper>

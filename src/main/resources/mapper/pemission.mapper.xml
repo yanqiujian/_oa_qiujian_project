@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间，当前文档的一个标识符-->
+<mapper namespace="com.qiujian.dto.PemissionDtoMapper">
+    <!--resultMap结果集的映射-->
+    <!--id是当前resultMap的唯一标识-->
+    <!--type是结果的类型-->
+    <resultMap id="PemissionDtoResultMap" type="com.qiujian.dto.PemissionDto">
+        <id property="pmId" column="pm_id" javaType="java.lang.Integer"/>
+        <result property="pmName" column="pm_name" javaType="java.lang.String"/>
+
+        <!--<association property="departmentDto" javaType="com.qiujian.mybatiys.dto.DepartmentDto">-->
+        <!--<id property="id" column="part_id" javaType="java.lang.Integer"/>-->
+        <!--<result property="name" column="pary_name" javaType="java.lang.String"/>-->
+        <!--</association>-->
+    </resultMap>
+    <!-- 查询语句 -->
+    <select id="queryPemissionDtoByName" resultMap="PemissionDtoResultMap">
+        SELECT p.pm_name FROM pemission p join
+        ro_pm rp join roles r join us_ro ur
+        join user u on p.pm_id=rp.fk_pm_id
+        AND rp.fk_roles_id=r.roles_id
+        AND r.roles_id=ur.fk_roles_id
+        AND ur.fk_user_id=u.user_id
+        and u.user_name =#{userName}
+    </select>
+
+</mapper>

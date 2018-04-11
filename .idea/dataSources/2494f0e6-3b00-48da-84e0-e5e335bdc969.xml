@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - oa_1706@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.3">
+    <root id="1"/>
+    <schema id="2" parent="1" name="activiti_1706"/>
+    <schema id="3" parent="1" name="db"/>
+    <schema id="4" parent="1" name="db_1706"/>
+    <schema id="5" parent="1" name="hlh"/>
+    <schema id="6" parent="1" name="hunlihui"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="j1706"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="new_db"/>
+    <schema id="11" parent="1" name="oa_1706">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="12" parent="1" name="phone_1706"/>
+    <schema id="13" parent="1" name="test"/>
+    <schema id="14" parent="1" name="wedding"/>
+    <table id="15" parent="11" name="bumen"/>
+    <table id="16" parent="11" name="gong_gao"/>
+    <table id="17" parent="11" name="kaoqin"/>
+    <table id="18" parent="11" name="pemission"/>
+    <table id="19" parent="11" name="qingjia"/>
+    <table id="20" parent="11" name="ro_pm"/>
+    <table id="21" parent="11" name="roles"/>
+    <table id="22" parent="11" name="us_ro"/>
+    <table id="23" parent="11" name="user"/>
+    <column id="24" parent="15" name="bm_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="15" name="bm_name">
+      <Position>2</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="26" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>bm_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="16" name="gg_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="16" name="gg_name">
+      <Position>2</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="29" parent="16" name="fk_user_id">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <key id="30" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>gg_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="31" parent="16" name="gong_gao_ibfk_1">
+      <ColNames>fk_user_id</ColNames>
+      <RefSchemaName>oa_1706</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <column id="32" parent="17" name="kq_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="17" name="kq_name">
+      <Position>2</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="34" parent="17" name="kq_date">
+      <Position>3</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="35" parent="17" name="kq_fangshi">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="36" parent="17" name="kq_time">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="37" parent="17" name="kq_didian">
+      <Position>6</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="38" parent="17" name="fk_user_id">
+      <Position>7</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <key id="39" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>kq_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="40" parent="17" name="kaoqin_ibfk_1">
+      <ColNames>fk_user_id</ColNames>
+      <RefSchemaName>oa_1706</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <column id="41" parent="18" name="pm_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="42" parent="18" name="pm_name">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="43" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>pm_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="19" name="qj_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="45" parent="19" name="qj_neixing">
+      <Position>2</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="46" parent="19" name="qj_shichang">
+      <Position>3</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="47" parent="19" name="qj_time">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="48" parent="19" name="qj_beizhu">
+      <Position>5</Position>
+      <DataType>VARCHAR(100)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="49" parent="19" name="qj_zhuangtai">
+      <Position>6</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="50" parent="19" name="fk_user_id">
+      <Position>7</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <key id="51" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>qj_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="19" name="qingjia_ibfk_1">
+      <ColNames>fk_user_id</ColNames>
+      <RefSchemaName>oa_1706</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <column id="53" parent="20" name="rp_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="54" parent="20" name="fk_roles_id">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="55" parent="20" name="fk_pm_id">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <key id="56" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>rp_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="57" parent="20" name="ro_pm_ibfk_1">
+      <ColNames>fk_roles_id</ColNames>
+      <RefSchemaName>oa_1706</RefSchemaName>
+      <RefTableName>roles</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>roles_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="58" parent="20" name="ro_pm_ibfk_2">
+      <ColNames>fk_pm_id</ColNames>
+      <RefSchemaName>oa_1706</RefSchemaName>
+      <RefTableName>pemission</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>pm_id</RefColNames>
+    </foreign-key>
+    <column id="59" parent="21" name="roles_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="60" parent="21" name="roles_name">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="61" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>roles_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="62" parent="22" name="ur_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="63" parent="22" name="fk_user_id">
+      <Position>2</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <column id="64" parent="22" name="fk_roles_id">
+      <Position>3</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <key id="65" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ur_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="66" parent="22" name="us_ro_ibfk_1">
+      <ColNames>fk_user_id</ColNames>
+      <RefSchemaName>oa_1706</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="67" parent="22" name="us_ro_ibfk_2">
+      <ColNames>fk_roles_id</ColNames>
+      <RefSchemaName>oa_1706</RefSchemaName>
+      <RefTableName>roles</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>roles_id</RefColNames>
+    </foreign-key>
+    <column id="68" parent="23" name="user_id">
+      <Position>1</Position>
+      <DataType>INT(10)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="69" parent="23" name="user_name">
+      <Position>2</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="70" parent="23" name="user_ganwei">
+      <Position>3</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="71" parent="23" name="fk_bm_id">
+      <Position>4</Position>
+      <DataType>INT(10)|4</DataType>
+    </column>
+    <key id="72" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="73" parent="23" name="user_ibfk_1">
+      <ColNames>fk_bm_id</ColNames>
+      <RefSchemaName>oa_1706</RefSchemaName>
+      <RefTableName>bumen</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>bm_id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
